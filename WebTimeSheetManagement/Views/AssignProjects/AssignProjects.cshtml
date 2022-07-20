@@ -1,0 +1,96 @@
+﻿@model WebTimeSheetManagement.Models.AssignRolesModel
+
+@{
+    ViewBag.Title = "AssignProjects";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Assign Projects</h2>
+
+@using (Html.BeginForm())
+{
+
+
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">Choose Projetcs</div>
+        <div class="panel-body">
+            @if (TempData["MessageRoles"] != null)
+            {
+                <p class="alert alert-success" id="successMessage">@TempData["MessageRoles"] </p>
+            }
+            @if (TempData["MessageErrorRoles"] != null)
+            {
+                <p class="alert alert-danger" id="successMessage">@TempData["MessageErrorRoles"] </p>
+            }
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-1">
+                    @*@Html.DropDownListFor(a => a.RegistrationID, new SelectList(Model.ListofAdmins, "RegistrationID", "Name"), new { @class = "form-control" })*@
+                    @*@Html.ValidationMessageFor(a => a.RegistrationID)*@
+                    @Html.ListBoxFor(m => m.ProjectID, Model.dropdown, new { @class = "listbox" })
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Choose Project To Assign to Users</div>
+        <div class="panel-body">
+            <div class="clearfix"></div>
+            <div class="row">
+
+
+                @for (var i = 0; i < Model.ListofUser.Count(); i++)
+                {
+                    <div class="col-md-4">
+                        <div>
+                            @Html.CheckBoxFor(it => Model.ListofUser[i].selectedUsers)
+                            <label>
+                                @Html.DisplayFor(it => Model.ListofUser[i].Name)
+                                @Html.HiddenFor(it => Model.ListofUser[i].RegistrationID)
+                                @Html.HiddenFor(it => Model.ListofUser[i].Name)
+                            </label>
+                        </div>
+                    </div>
+
+
+                }
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-offset-0 col-md-12">
+                        <input type="submit" value="AssignProjects" class="btn btn-success" />
+                        @Html.ActionLink("Cancel", "Dashboard", "Admin", null, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script src="~/Scripts/multiselect/dropdownScript1.js"></script>
+<script src="~/Scripts/multiselect/dropdownjs.js"></script>
+<script src="~/Scripts/multiselect/dropdown2.js"></script>
+<link href="~/Scripts/multiselect/StyleSheet1.css" rel="stylesheet" />
+<link href="~/Scripts/multiselect/StyleSheet2.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(function () {
+        $('.listbox').multiselect({
+            maxHeight: 150,
+
+            includeSelectAllOption: false
+
+
+        });
+    });
+</script>

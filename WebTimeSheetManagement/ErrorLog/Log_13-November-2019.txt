@@ -1,0 +1,41 @@
+
+11/13/2019 8:26:03 PM
+------------------------------------------------------------------------------------------------
+Controller Name :- AssignProjects
+Action Method Name :- AssignProjects
+------------------------------------------------------------------------------------------------
+System.Web.Mvc.ExceptionContext
+Message ---
+{0}Value cannot be null.
+Parameter name: source
+Source ---
+{0}System.Core
+StackTrace ---
+{0}   at System.Linq.Enumerable.Contains[TSource](IEnumerable`1 source, TSource value, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.Contains[TSource](IEnumerable`1 source, TSource value)
+   at WebTimeSheetManagement.Concrete.AssignRolesConcrete.<>c__DisplayClass11_0.<insertmapping>b__0(SelectListItem p) in D:\khalid\d\Timesheet\WebTimeSheetManagement-master\WebTimeSheetManagement.Concrete\AssignRolesConcrete.cs:line 274
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at WebTimeSheetManagement.Concrete.AssignRolesConcrete.insertmapping(AssignRolesModel AssignRolesModel) in D:\khalid\d\Timesheet\WebTimeSheetManagement-master\WebTimeSheetManagement.Concrete\AssignRolesConcrete.cs:line 274
+   at WebTimeSheetManagement.Controllers.AssignProjectsController.AssignProjects(AssignRolesModel objassign) in D:\khalid\d\Timesheet\WebTimeSheetManagement-master\WebTimeSheetManagement\Controllers\AssignProjectsController.cs:line 116
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+TargetSite ---
+{0}Boolean Contains[TSource](System.Collections.Generic.IEnumerable`1[TSource], TSource, System.Collections.Generic.IEqualityComparer`1[TSource])
+

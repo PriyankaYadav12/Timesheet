@@ -1,0 +1,41 @@
+insert into [Registration](Name,Mobileno,EmailID,Username,Password,ConfirmPassword,Gender,Birthdate,RoleID,CreatedOn,EmployeeID,DateofJoining,ForceChangePassword)
+select Name,Mobileno,EmailID,Username,Password,ConfirmPassword,Gender,Birthdate,RoleID,CreatedOn,EmployeeID,DateofJoining,ForceChangePassword from [Registration] where RegistrationID = 48
+
+update Registration set Name='AKshay',Username='AKshay',RoleID=2 where RegistrationID = 59
+
+select * from [dbo].[UserProjectMapping]
+
+insert into UserProjectMapping(RegistrationID,ProjectID)
+values(59,2)
+
+ 
+ select TB.UserID,  
+    count(case when Status = 1 then 1 else NULL end) SubmittedCount,  
+    count(case when Status = 2 then 1 else NULL end) ApprovedCount,  
+    count(case when Status = 3 then 1 else NULL end) RejectedCount  
+from TimeSheetAuditTB TB
+join TimeSheetDetails TD on TB.UserID = TD.UserID
+and TB.TimeSheetID = TD.TimeSheetID
+where TB.UserID = 47   
+group by TB.UserID  
+
+
+Select * from TimeSheetAuditTB where UserID=76
+Select * from TimeSheetDetails where UserID = 76
+
+Select * from TimeSheetAuditTB where UserID=47
+Select * from TimeSheetDetails where UserID = 47
+Select * from TimeSheetMaster  where UserID = 47
+Select * from DescriptionTB
+Select * from AuditTB
+truncate table [dbo].[ELMAH_Error]
+truncate table TimesheetMaster
+truncate table TimesheetAuditTB
+truncate table timesheetdetails
+truncate table DescriptionTB
+truncate table AuditTB
+truncate table Expense
+truncate table ExpenseAuditTB
+truncate table NotificationsTB
+
+

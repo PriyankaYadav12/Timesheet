@@ -1,0 +1,94 @@
+﻿@model WebTimeSheetManagement.Models.AssignRolesModel
+@{
+    ViewBag.Title = "RemoveProject";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit Assigned Project</h2>
+<head>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>*@
+    </head>
+
+@using (Html.BeginForm("RemoveProject1", "RemoveProject", FormMethod.Post))
+{
+
+    <div class="panel panel-default">
+        @*<div class="panel-heading">Choose User</div>*@
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+            @if (TempData["MessageRoles"] != null)
+            {
+                <p class="alert alert-success" id="successMessage">@TempData["MessageRoles"] </p>
+            }
+            @if (TempData["MessageErrorRoles"] != null)
+            {
+                <p class="alert alert-danger" id="successMessage">@TempData["MessageErrorRoles"] </p>
+            }
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-4">
+
+                    @Html.DropDownListFor(m => m.DropDownId, Model.AssignUsers, "---Select User--- ", new { @class = "btn btn-default dropdown-toggle" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Assigned Project </div>
+        <div class="panel-body">
+            <div class="clearfix"></div>
+            <div class="row">
+
+                <div id="partialDiv">
+                    @Html.Partial("_EmpTestPartial")
+                </div>
+                <script>
+                    $(document).ready(function () {
+                    });
+                    $("#DropDownId").on("change", function () {
+                        //debugger;
+                        var a = $("#DropDownId").val();
+                        
+                        if (a == "")
+                        { 
+                            return false;
+                        }
+                        $.ajax(
+                            {
+                                url: '/RemoveProject/GetEmployeeRecordWithProjects?DropDownId=' + a,
+                                type: 'GET',
+                                data: "",
+                                contentType: 'application/json; charset=utf-8',
+                                success: function (data) {
+                                    $("#partialDiv").html(data);
+                                },
+                                error: function () {
+                                    alert("error");
+                                }
+                            });
+                    });
+
+                </script>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-0 col-md-12">
+                    <br />
+                    <input type="submit" value="Edit Assigned Projects" formaction="RemoveProject1" class="btn btn-success" />
+                    @Html.ActionLink("Cancel", "Dashboard", "Admin", null, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    @*<input type="submit" value="Edit" formaction="RemoveProject1" class="btn btn-success" />*@
+
+}
+
+@*<script src="~/Scripts/multiselect/AjaxCallDDl.js"></script>*@
+
+
+<script src="~/Scripts/multiselect/DropDownPopulateAjax.js"></script>
